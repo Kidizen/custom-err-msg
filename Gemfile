@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 source 'http://rubygems.org'
 
+gem 'activerecord', '~> 6.0.0'
 gem 'rspec'
-gem 'activerecord'
-gem 'sqlite3-ruby'
+gem 'sqlite3'
