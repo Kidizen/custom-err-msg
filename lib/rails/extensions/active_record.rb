@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ActiveRecord
   class Error
 
@@ -9,17 +11,17 @@ protected
         'full_messages.format''full_messages.format'
       ]
 
-      if self.message.start_with?('^')
+      if message.start_with?('^')
         keys.push('{{message}}')
 
-        options.merge!(:default => self.message[1..-1])
+        options.merge!(default: message[1..])
       else
         keys.push('%{attribute} %{message}')
 
-        options.merge!(:default => keys, :message => self.message)        
+        options.merge!(default: keys, message: message)
       end
-      
-      I18n.translate(keys.shift, options)
+
+      I18n.translate(keys.shift, **options)
     end
   end
 end
